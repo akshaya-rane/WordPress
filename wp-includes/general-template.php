@@ -2719,7 +2719,9 @@ function feed_links_extra( $args = array() ) {
 
 		$post_type_obj = get_post_type_object( $post_type );
 		$title = sprintf( $args['posttypetitle'], get_bloginfo( 'name' ), $args['separator'], $post_type_obj->labels->name );
-		$href = get_post_type_archive_feed_link( $post_type_obj->name );
+		if ( $post_type_obj ) {
+			$href = get_post_type_archive_feed_link( $post_type_obj->name );
+		}
 	} elseif ( is_category() ) {
 		$term = get_queried_object();
 
